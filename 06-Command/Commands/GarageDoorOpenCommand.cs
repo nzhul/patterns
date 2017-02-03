@@ -1,4 +1,5 @@
-﻿using _06_Command.Executors;
+﻿using System;
+using _06_Command.Executors;
 
 namespace _06_Command.Commands
 {
@@ -13,7 +14,12 @@ namespace _06_Command.Commands
 
 		public void Execute()
 		{
-			garageDoor.Up();
+			this.garageDoor.Up();
+		}
+
+		public void Undo()
+		{
+			this.garageDoor.Down();
 		}
 	}
 }

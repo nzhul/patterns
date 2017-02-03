@@ -1,5 +1,6 @@
 ﻿using _06_Command.Commands;
 using _06_Command.Executors;
+using System;
 
 namespace _06_Command
 {
@@ -36,8 +37,6 @@ namespace _06_Command
 			remote.SetCommand(2, ceilingFanOnCommand, ceilingFanOffcommand);
 			remote.SetCommand(3, stereoOnWithCD, stereoOffCommand);
 
-			System.Console.WriteLine(remote);
-
 			remote.OnButtonWasPressed(0);
 			remote.OffButtonWasPressed(0);
 			remote.OnButtonWasPressed(1);
@@ -46,6 +45,12 @@ namespace _06_Command
 			remote.OffButtonWasPressed(2);
 			remote.OnButtonWasPressed(3);
 			remote.OffButtonWasPressed(3);
+
+			Console.WriteLine("\n---- Undo the last action ----\n");
+			remote.UndoButtonWasPressed();
+
+			Console.WriteLine();
+			System.Console.WriteLine(remote);
 		}
 	}
 }

@@ -13,9 +13,14 @@ namespace _06_Command.Commands
 
 		public void Execute()
 		{
-			stereo.On();
-			stereo.SetCD();
-			stereo.SetVolume(11);
+			this.stereo.On();
+			this.stereo.SetCD();
+			this.stereo.SetVolume(11);
+		}
+
+		public void Undo()
+		{
+			this.stereo.Off();
 		}
 	}
 }

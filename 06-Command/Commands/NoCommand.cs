@@ -8,5 +8,10 @@ namespace _06_Command.Commands
 		{
 			throw new NotImplementedException();
 		}
+
+		public void Undo()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

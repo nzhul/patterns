@@ -1,4 +1,5 @@
-﻿using _06_Command.Executors;
+﻿using System;
+using _06_Command.Executors;
 
 namespace _06_Command.Commands
 {
@@ -14,6 +15,11 @@ namespace _06_Command.Commands
 		public void Execute()
 		{
 			this.light.Off();
+		}
+
+		public void Undo()
+		{
+			this.light.On();
 		}
 	}
 }

@@ -1,9 +1,5 @@
 ﻿using _06_Command.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace _06_Command
 {
@@ -11,6 +7,7 @@ namespace _06_Command
 	{
 		ICommand[] onCommands;
 		ICommand[] offCommands;
+		ICommand undoCommand;
 
 		public RemoteControl()
 		{
@@ -23,6 +20,8 @@ namespace _06_Command
 				onCommands[i] = noCommand;
 				offCommands[i] = noCommand;
 			}
+
+			this.undoCommand = noCommand;
 		}
 
 		public void SetCommand(int slot, ICommand onCommand, ICommand offCommand)
@@ -34,11 +33,18 @@ namespace _06_Command
 		public void OnButtonWasPressed(int slot)
 		{
 			onCommands[slot].Execute();
+			undoCommand = onCommands[slot];
 		}
 
 		public void OffButtonWasPressed(int slot)
 		{
 			offCommands[slot].Execute();
+			undoCommand = offCommands[slot];
+		}
+
+		public void UndoButtonWasPressed()
+		{
+			undoCommand.Undo();
 		}
 
 		public override string ToString()
@@ -49,6 +55,8 @@ namespace _06_Command
 			{
 				sb.AppendLine("[slot " + i + "] " + onCommands[i].GetType().Name + "     " + offCommands[i].GetType().Name);
 			}
+
+			sb.AppendLine("[undo] " + undoCommand.GetType().Name);
 
 			return sb.ToString();
 		}

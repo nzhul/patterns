@@ -1,4 +1,5 @@
-﻿using _06_Command.Executors;
+﻿using System;
+using _06_Command.Executors;
 
 namespace _06_Command.Commands
 {
@@ -14,6 +15,13 @@ namespace _06_Command.Commands
 		public void Execute()
 		{
 			this.stereo.Off();
+		}
+
+		public void Undo()
+		{
+			this.stereo.On();
+			this.stereo.SetCD();
+			this.stereo.SetVolume(11);
 		}
 	}
 }

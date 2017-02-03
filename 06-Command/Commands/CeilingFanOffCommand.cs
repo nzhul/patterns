@@ -16,5 +16,10 @@ namespace _06_Command.Commands
 		{
 			this.ceilingFan.Off();
 		}
+
+		public void Undo()
+		{
+			this.ceilingFan.On();
+		}
 	}
 }

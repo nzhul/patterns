@@ -14,7 +14,12 @@ namespace _06_Command.Commands
 
 		public void Execute()
 		{
-			light.On();
+			this.light.On();
+		}
+
+		public void Undo()
+		{
+			this.light.Off();
 		}
 	}
 }
